@@ -23,6 +23,12 @@ public class MailerApplication {
 		SpringApplication.run(MailerApplication.class, args);
 	}
 
+	@GetMapping("/")
+	public  String getApi(){
+
+		return "SMPT bucket";
+	}
+
 	@PostMapping("/sendmail")
 	public String sendUsermail(@RequestParam(value = "subject") String subject , @RequestParam(value = "name") String name) {
 		Properties properties = System.getProperties();
@@ -32,7 +38,7 @@ public class MailerApplication {
 		String status = "";
 
 		if(subject.equals("Profile Notification #Edited")){
-			status = "Edited";
+			status = "updated";
 		} else if (subject.equals("Profile Notification #Created")) {
 			status = "Created";
 		} else if ( subject.equals("Profile Notification #Deleted")) {
